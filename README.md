@@ -27,18 +27,20 @@ These services are containerized using Docker and deployed on a Kubernetes clust
 - [Python](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/downloads)
 
-# Setup
+## Setup
 
-## 1. Setting Up the Development Environment
+1. Setting Up the Development Environment
 
 ### Clone the Repository:
 
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
+```
+###Install Dependencies:
 
+For Node.js services, ensure you run npm install inside each service directory if applicable.
 
-
-
+2. Creating the Microservices
 
 
