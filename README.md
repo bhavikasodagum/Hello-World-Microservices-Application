@@ -19,5 +19,26 @@ These services are containerized using Docker and deployed on a Kubernetes clust
 - [Usage](#usage)
 - [License](#license)
 
+## Prerequisites
+- [Docker](https://www.docker.com/get-started)
+- [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [Minikube](https://minikube.sigs.k8s.io/docs/start/) (for local Kubernetes cluster)
+- [Python](https://www.python.org/downloads/)
+- [Git](https://git-scm.com/downloads)
+
+# Setup
+
+## 1. Setting Up the Development Environment
+
+### Clone the Repository:
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+
+
+
+
 
 
