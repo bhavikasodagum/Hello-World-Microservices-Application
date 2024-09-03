@@ -171,7 +171,34 @@ kubectl get services
    ```bash
    kubectl port-forward svc/world-service 8083:80
    ```
-2. Run the Integration Script:
+2. Write script for integration
+   example:
+   ```bash
+   import requests
+
+   # Define the endpoints
+   hello_url = "http://localhost:8080/hello"
+   world_url = "http://localhost:8083/world"
+
+   try:
+    # Make requests to the services
+    hello_response = requests.get(hello_url)
+    world_response = requests.get(world_url)
+
+    # Check if both requests were successful
+    if hello_response.status_code == 200 and world_response.status_code == 200:
+        # Combine and print the responses
+        combined_message = f"{hello_response.text} {world_response.text}"
+        print(combined_message)
+    else:
+        print("Failed to retrieve responses from one or both services.")
+        print(f"Hello Service Status Code: {hello_response.status_code}")
+        print(f"World Service Status Code: {world_response.status_code}")
+
+    except requests.RequestException as e:
+    print(f"An error occurred: {e}")
+   ```
+4. Run the Integration Script:
 ```bash
 cd ..
 python integration_test.py
@@ -187,18 +214,12 @@ Hello World
 
 ## Usage
 
-1. **Clone the Repository**:
-    ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
-    ```
-
-2. **Start Minikube**:
+1. **Start Minikube**:
     ```bash
     minikube start
     ```
 
-3. **Deploy Services to Kubernetes**:
+2. **Deploy Services to Kubernetes**:
     ```bash
     cd kubernetes
     kubectl apply -f hello-deployment.yaml
@@ -207,7 +228,7 @@ Hello World
     kubectl apply -f world-service.yaml
     ```
 
-4. **Port Forward Services**:
+3. **Port Forward Services**:
     - **Hello Service**:
         ```bash
         kubectl port-forward svc/hello-service 8080:80
@@ -217,9 +238,8 @@ Hello World
         kubectl port-forward svc/world-service 8083:80
         ```
 
-5. **Run Integration Test**:
+4. **Run Integration Test**:
     ```bash
-    cd ..
     python integration_test.py
     ```
 
