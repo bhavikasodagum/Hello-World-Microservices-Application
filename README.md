@@ -35,7 +35,7 @@ These services are containerized using Docker and deployed on a Kubernetes clust
 
 ### 1. Setting Up the Development Environment
 1. Install Necessary Tools:
-   - For Java: Install JDK, Maven, Spring Boot.
+   - For Java: Install JDK and Maven.
      
 ### 2. Creating the Microservices
 1. Create a Spring Boot Project:
