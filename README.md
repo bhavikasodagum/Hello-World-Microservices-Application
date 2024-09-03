@@ -1,4 +1,4 @@
-# Hello-World-Microservices-Application
+# Hello World Microservices Application
 
 ## Course: Enterprise Software Platform
 
