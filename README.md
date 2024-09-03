@@ -201,7 +201,7 @@ kubectl get services
 4. Run the Integration Script:
 ```bash
 cd ..
-python integration_test.py
+python3 integration_test.py
 ```
 Output:
 ```bash
@@ -240,7 +240,7 @@ Hello World
 
 4. **Run Integration Test**:
     ```bash
-    python integration_test.py
+    python3 integration_test.py
     ```
 
     **Expected Output**:
