@@ -34,22 +34,82 @@ These services are containerized using Docker and deployed on a Kubernetes clust
 ## Setup
 
 ### 1. Setting Up the Development Environment
-1. **Install Necessary Tools**:
-   - For Java: Install JDK and Maven.
-2. **Create a Git Repository**:
-   - Initialize a Git repository in your project directory.
-
+1. Install Necessary Tools:
+   - For Java: Install JDK, Maven, Spring Boot.
+     
 ### 2. Creating the Microservices
-1. **Create a new project**:
-   - For Java: Use Spring Initializr or your preferred IDE(used VSCode in this project) to create a Spring Boot application.
-2. **Add Endpoint**:
-   - Create an endpoint `/hello` that returns the string "Hello".
-   - Create an endpoint `/world` that returns the string "World".
-3. **Check the services**
-   - open http://localhost:8080/hello to check Hello Service
-   - open http://localhost:8083/world to check World service
-   (Use the port numbers that you assigned)
-   
+1. Create a Spring Boot Project:
+Go to Spring Initializr and choose the following options:
+- Project: Maven Project
+- Language: Java
+- Spring Boot: (Use the latest stable version)
+- Group: com.example
+- Artifact: hello-service 
+- Dependencies: Web
+
+Download and Extract the generated ZIP file and open the project in your IDE(VScode has been used for this project)
+
+2. Implement Hello Service:
+  - Create a Controller in src/main/java/com/example/hello_service,
+   create a new class HelloController.java:
+   ```bash
+   package com.example.helloservice;
+   import org.springframework.web.bind.annotation.GetMapping;
+   import org.springframework.web.bind.annotation.RequestMapping;
+   import org.springframework.web.bind.annotation.RestController;
+
+   @RestController
+   @RequestMapping("/hello")
+   public class HelloController {
+    @GetMapping
+    public String sayHello() {
+        return "Hello";
+    }
+   }
+   ```
+   in src/main/resources/application.properties add:
+   ```
+   server.port=8080
+   ```
+  - Run the application by executing mvn spring-boot:run 
+  - Verify: Open your browser or use curl to test: http://localhost:8080/hello
+
+3. Create a Spring Boot Project:
+Go to Spring Initializr and choose the following options:
+- Project: Maven Project
+- Language: Java
+- Spring Boot: (Use the latest stable version)
+- Group: com.example
+- Artifact: world-service  
+- Dependencies: Web
+  
+Download and Extract the generated ZIP file and open the project in your IDE(VScode has been used for this project)
+
+4. Implement World Service:
+  - Create a Controller in src/main/java/com/example/world_service
+    create a new class WorldController.java:
+    ```bash
+    package com.example.worldservice;
+
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RequestMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
+    @RestController
+    @RequestMapping("/world")
+    public class WorldController {
+    @GetMapping
+    public String sayWorld() {
+        return "World";
+    }
+    }
+    ```
+    in src/main/resources/application.properties add:
+    ```
+    server.port=8083
+    ```
+  - Run the application by executing mvn spring-boot:run 
+  - Verify: Open your browser or use curl to test: http://localhost:8083/world
 
 ### 3. Containerizing the Microservices with Docker
 1. Create Dockerfiles
