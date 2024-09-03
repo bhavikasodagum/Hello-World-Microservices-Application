@@ -1,6 +1,9 @@
 # Hello-World-Microservices-Application
 
+# Course Enterprise Software Platform
+
 ## Description
+
 This project demonstrates a simple "Hello World" microservices application using Spring Boot (Java), Docker, and Kubernetes. It consists of two microservices:
 - **Hello Service**: Returns a message ("Hello").
 - **World Service**: Returns a message ("World").
@@ -8,6 +11,7 @@ This project demonstrates a simple "Hello World" microservices application using
 These services are containerized using Docker and deployed on a Kubernetes cluster. An integration script combines their responses to display "Hello World".
 
 ## Table of Contents
+
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
   - [1. Setting Up the Development Environment](#1-setting-up-the-development-environment)
@@ -17,9 +21,9 @@ These services are containerized using Docker and deployed on a Kubernetes clust
   - [5. Testing and Integration](#5-testing-and-integration)
 - [Docker Images](#docker-images)
 - [Usage](#usage)
-- [License](#license)
 
 ## Prerequisites
+
 - [Docker](https://www.docker.com/get-started)
 - [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
@@ -30,37 +34,54 @@ These services are containerized using Docker and deployed on a Kubernetes clust
 ## Setup
 
 ### 1. Setting Up the Development Environment
-
-Clone the Repository:
-
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-```
-Install Dependencies:
-
-For Node.js services, ensure you run npm install inside each service directory if applicable.
+1. **Install Necessary Tools**:
+   - For Java: Install JDK and Maven.
+2. **Create a Git Repository**:
+   - Initialize a Git repository in your project directory.
 
 ### 2. Creating the Microservices
+1. **Create a new project**:
+   - For Java: Use Spring Initializr or your preferred IDE(used VSCode in this project) to create a Spring Boot application.
+2. **Add Endpoint**:
+   - Create an endpoint `/hello` that returns the string "Hello".
+   - Create an endpoint `/world` that returns the string "World".
+3. **Check the services**
+   - open http://localhost:8080/hello to check Hello Service
+   - open http://localhost:8083/world to check World service
+   (Use the port numbers that you assigned)
+   
+
 ### 3. Containerizing the Microservices with Docker
-1. Navigate to Hello Service Directory:
-```bash
-cd hello service
+1. Create Dockerfiles
+- **Hello Service**: Create a `Dockerfile` in the `hello-service` directory.
+- **World Service**: Create a `Dockerfile` in the `world-service` directory.
+
+Here are example `Dockerfile` contents:
+**Hello Service Dockerfile:**
+```Dockerfile
+FROM openjdk:22
+COPY target/hello-service.jar /app/hello-service.jar
+ENTRYPOINT ["java", "-jar", "/app/hello-service.jar"]
 ```
-2. Build the Hello Service Docker Image:
-```bash
-docker build -t your-dockerhub-username/hello-service:latest .
+**World Service Dockerfile:**
+```Dockerfile
+FROM openjdk:22
+COPY target/world-service.jar /app/world-service.jar
+ENTRYPOINT ["java", "-jar", "/app/world-service.jar"]
 ```
-3. Push the Hello Service Image to Docker Hub:
+
+2. Build Docker Images:
 ```bash
-docker push your-dockerhub-username/hello-service:latest
+docker build -t <your-dockerhub-username>/hello-service:latest -f hello-service/Dockerfile .
+docker build -t <your-dockerhub-username>/world-service:latest -f world-service/Dockerfile .
 ```
-4. Repeat for World Service:
+
+3. Push Docker Images to Docker Hub:
 ```bash
-cd ../world-service
-docker build -t your-dockerhub-username/world-service:latest .
-docker push your-dockerhub-username/world-service:latest
+docker push <your-dockerhub-username>/hello-service:latest
+docker push <your-dockerhub-username>/world-service:latest
 ```
+
 ### 4. Deploying the Application on Kubernetes
 1. Start Minikube:
 ```bash
@@ -79,6 +100,7 @@ kubectl apply -f world-service.yaml
 kubectl get pods
 kubectl get services
 ```
+
 ### 5. Testing and Integration
 1. Port Forward Services:
    Hello Service:
@@ -102,6 +124,7 @@ Hello World
 
 - **Hello Service**: [bhavikasodagum/hello-service](https://hub.docker.com/r/bhavikasodagum/hello-service)
 - **World Service**: [bhavikasodagum/world-service](https://hub.docker.com/r/bhavikasodagum/world-service)
+
 ## Usage
 
 1. **Clone the Repository**:
