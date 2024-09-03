@@ -1,6 +1,6 @@
 # Hello-World-Microservices-Application
 
-# Course Enterprise Software Platform
+## Course: Enterprise Software Platform
 
 ## Description
 
