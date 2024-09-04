@@ -132,8 +132,8 @@ ENTRYPOINT ["java", "-jar", "/app/world-service.jar"]
 
 2. Build Docker Images:
 ```bash
-docker build -t bhavikasodagum/hello-service:latest -f hello-service/Dockerfile .
-docker build -t bhavikasodagum/world-service:latest -f world-service/Dockerfile .
+docker build -t hello-service .
+docker build -t world-service .
 ```
 
 3. Push Docker Images to Docker Hub:
@@ -148,6 +148,21 @@ docker tag world-service bhavikasodagum/world-service:latest
 docker push bhavikasodagum/hello-service:latest
 docker push bhavikasodagum/world-service:latest
 ```
+
+4. Run the Hello Service Container:
+```bash
+docker run -d -p 8080:8080 hello-service
+```
+
+5. Run the World Service Container:
+```bash
+docker run -d -p 8083:8083 world-service
+```
+
+6. Test the Services Locally:
+Open Your Browser and visit these URLs:
+http://localhost:8080/hello to test the Hello service.
+http://localhost:8083/world to test the World service.
 
 ### 4. Deploying the Application on Kubernetes
 1. Start Minikube:
