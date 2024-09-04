@@ -133,14 +133,20 @@ ENTRYPOINT ["java", "-jar", "/app/world-service.jar"]
 
 2. Build Docker Images:
 ```bash
-docker build -t <your-dockerhub-username>/hello-service:latest -f hello-service/Dockerfile .
-docker build -t <your-dockerhub-username>/world-service:latest -f world-service/Dockerfile .
+docker build -t bhavikasodagum/hello-service:latest -f hello-service/Dockerfile .
+docker build -t bhavikasodagum/world-service:latest -f world-service/Dockerfile .
 ```
 
 3. Push Docker Images to Docker Hub:
+Tag :
 ```bash
-docker push <your-dockerhub-username>/hello-service:latest
-docker push <your-dockerhub-username>/world-service:latest
+docker tag hello-service bhavikasodagum/hello-service:latest
+docker tag world-service bhavikasodagum/world-service:latest
+```
+Push:
+```bash
+docker push bhavikasodagum/hello-service:latest
+docker push bhavikasodagum/world-service:latest
 ```
 
 ### 4. Deploying the Application on Kubernetes
