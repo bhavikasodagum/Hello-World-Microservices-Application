@@ -138,12 +138,12 @@ docker build -t bhavikasodagum/world-service:latest -f world-service/Dockerfile 
 ```
 
 3. Push Docker Images to Docker Hub:
-Tag :
+ Tag :
 ```bash
 docker tag hello-service bhavikasodagum/hello-service:latest
 docker tag world-service bhavikasodagum/world-service:latest
 ```
-Push:
+ Push:
 ```bash
 docker push bhavikasodagum/hello-service:latest
 docker push bhavikasodagum/world-service:latest
