@@ -29,7 +29,6 @@ These services are containerized using Docker and deployed on a Kubernetes clust
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/) (for local Kubernetes cluster)
 - [Python](https://www.python.org/downloads/)
-- [Git](https://git-scm.com/downloads)
 
 ## Setup
 
